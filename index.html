@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>طبق AR | مطعمك</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+        body { 
+            margin: 0;
+            font-family: Arial;
+            text-align: center;
+        }
+        #ar-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        model-viewer { 
+            width: 100%; 
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <model-viewer 
+        id="model-viewer"
+        src="Sandvich.glb"
+        camera-controls
+        auto-rotate
+        shadow-intensity="1"
+        ar
+        ar-modes="scene-viewer quick-look"
+        alt="طبقك بالواقع المعزز">
+    </model-viewer>
+
+    <button id="ar-button">👁️ مشاهدة الطبق في AR</button>
+
+    <script>
+        const modelViewer = document.getElementById('model-viewer');
+        const arButton = document.getElementById('ar-button');
+        
+        arButton.addEventListener('click', () => {
+            modelViewer.activateAR();
+        });
+    </script>
+</body>
+</html>
